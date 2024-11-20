@@ -16,6 +16,12 @@
 
                     {{ __('Has iniciado sesión correctamente!') }}
                 </div>
+
+                <div class="card-body">
+                    <a href="{{ route('cars.index') }}" class="btn btn-primary">Ir a la lista de coches</a>
+                    <a href="{{ route('rooms.index') }}" class="btn btn-primary">Ir a la lista de salones</a>
+                </div>
+
             </div>
         </div>
     </div>

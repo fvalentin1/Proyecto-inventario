@@ -30,10 +30,17 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/cars') }}">Cars</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/rooms') }}">Rooms</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
