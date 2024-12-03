@@ -44,6 +44,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/rooms') }}">Rooms</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/news') }}">News</a>
+                        </li>
                         @auth
                             @role('admin')
                                 <li class="nav-item">
