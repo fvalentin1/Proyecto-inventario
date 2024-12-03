@@ -41,6 +41,16 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/rooms') }}">Rooms</a>
                         </li>
+                        @auth
+                            @role('admin')
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin.users.index') }}">Usuarios</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin.roles.index') }}">Roles</a>
+                                </li>
+                            @endrole
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
