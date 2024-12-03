@@ -22,6 +22,10 @@
             <label for="image">Image (optional)</label>
             <input type="file" name="image" id="image" class="form-control">
         </div>
+        <div class="form-check mb-3">
+            <input type="checkbox" name="remove_image" id="remove_image" class="form-check-input">
+            <label for="remove_image" class="form-check-label">Remove current image</label>
+        </div>
         <button type="submit" class="btn btn-success">Update</button>
         <a href="{{ route('news.index') }}" class="btn btn-secondary">Cancel</a>
     </form>

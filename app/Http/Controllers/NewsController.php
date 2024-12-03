@@ -70,7 +70,15 @@ class NewsController extends Controller
         $news->subtitle = $request->subtitle;
         $news->body = $request->body;
 
-        if ($request->hasFile('image')) {
+        if ($request->has('remove_image') && $request->remove_image) {
+            // Remover la imagen actual y asignar la imagen por defecto
+            $defaultImagePath = public_path('images/default.png');
+            if (file_exists($defaultImagePath)) {
+                $news->image = base64_encode(file_get_contents($defaultImagePath));
+            } else {
+                $news->image = null; // Opción alternativa si no existe la imagen predeterminada
+            }
+        } elseif ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageData = base64_encode(file_get_contents($image->getRealPath()));
             $news->image = $imageData;
@@ -80,6 +88,7 @@ class NewsController extends Controller
 
         return redirect()->route('news.index')->with('success', 'News updated successfully.');
     }
+
 
     public function destroy(News $news)
     {
