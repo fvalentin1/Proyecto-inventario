@@ -18,8 +18,9 @@
                 </div>
 
                 <div class="card-body">
-                    <a href="{{ route('cars.index') }}" class="btn btn-primary">Ir a la lista de coches</a>
-                    <a href="{{ route('rooms.index') }}" class="btn btn-primary">Ir a la lista de salones</a>
+                    <a href="{{ route('cars.index') }}" class="btn btn-primary">Cars</a>
+                    <a href="{{ route('rooms.index') }}" class="btn btn-primary">Rooms</a>
+                    <a href="{{ route('news.index') }}" class="btn btn-primary">News</a>
                 </div>
 
             </div>
