@@ -116,6 +116,24 @@
             </div>
             <div class="offcanvas-body">
                 <ul class="nav flex-column">
+                    <!-- Sección Inicio -->
+                    <li class="nav-item text-uppercase fw-bold text-secondary mb-2">
+                        Inicio
+                    </li>
+
+                    <div class="bg-secondary p-2 rounded">
+                        <li class="nav-item">
+                            <a class="nav-link {{ Route::is('home') ? 'text-warning' : 'text-white' }}" href="{{ url('/home') }}">
+                                <i class="fa-solid fa-house"></i> Dashboard
+                            </a>
+                        </li>
+                    </div>
+
+                    <!-- Separador -->
+                    <br>
+                    <hr class="bg-secondary">
+                    <br>
+
                     <!-- Sección Gestión Base -->
                     <li class="nav-item text-uppercase fw-bold text-secondary mb-2">
                         Gestión Base
@@ -137,6 +155,9 @@
                             </a>
                         </li>
                     </div>
+
+
+                    <!-- Separador -->
                     <br>
                     <hr class="bg-secondary">
                     <br>
