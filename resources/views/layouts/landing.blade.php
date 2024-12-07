@@ -30,13 +30,8 @@
 </head>
 <body>
     <div id="app">
-        <!-- Navbar -->
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
-                <!-- Button to toggle sidebar -->
-                <button class="btn btn-dark me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
-                    <i class="fas fa-bars"></i>
-                </button>
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
@@ -44,10 +39,12 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        {{-- <li class="nav-item">
+                    {{-- <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ url('/cars') }}">Cars</a>
                         </li>
                         <li class="nav-item">
@@ -65,7 +62,15 @@
                                     <a class="nav-link" href="{{ route('admin.roles.index') }}">Roles</a>
                                 </li>
                             @endrole
-                        @endauth --}}
+                        @endauth
+                    </ul> --}}
+
+                    <ul class="navbar-nav mr-auto">
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('home') }}">Ir a Dashboard</a>
+                            </li>
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -107,64 +112,6 @@
                 </div>
             </div>
         </nav>
-
-        <!-- Offcanvas Sidebar -->
-        <div class="offcanvas offcanvas-start bg-dark text-white" tabindex="-1" id="offcanvasSidebar" aria-labelledby="offcanvasSidebarLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasSidebarLabel">Menu</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <ul class="nav flex-column">
-                    <!-- Sección Gestión Base -->
-                    <li class="nav-item text-uppercase fw-bold text-secondary mb-2">
-                        Gestión Base
-                    </li>
-                    <div class="bg-secondary p-2 rounded">
-                        <li class="nav-item">
-                            <a class="nav-link {{ Route::is('cars.*') ? 'text-warning' : 'text-white' }}" href="{{ url('/cars') }}">
-                                <i class="fa-solid fa-car"></i> Cars
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ Route::is('rooms.*') ? 'text-warning' : 'text-white' }}" href="{{ url('/rooms') }}">
-                                <i class="fa-solid fa-building"></i> Rooms
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ Route::is('news.*') ? 'text-warning' : 'text-white' }}" href="{{ url('/news') }}">
-                                <i class="fa-solid fa-newspaper"></i> News
-                            </a>
-                        </li>
-                    </div>
-                    <br>
-                    <hr class="bg-secondary">
-                    <br>
-
-                    <!-- Sección Gestión de Usuarios -->
-                    @auth
-                        @role('admin')
-                            <li class="nav-item text-uppercase fw-bold text-secondary mb-2">
-                                Gestión de Usuarios
-                            </li>
-                            <div class="bg-secondary p-2 rounded">
-                                <li class="nav-item">
-                                    <a class="nav-link {{ Route::is('admin.users.*') ? 'text-warning' : 'text-white' }}" href="{{ route('admin.users.index') }}">
-                                        <i class="fa-solid fa-users"></i> Usuarios
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link {{ Route::is('admin.roles.*') ? 'text-warning' : 'text-white' }}" href="{{ route('admin.roles.index') }}">
-                                        <i class="fa-solid fa-address-card"></i> Roles
-                                    </a>
-                                </li>
-                            </div>
-                        @endrole
-                    @endauth
-                </ul>
-            </div>
-        </div>
-
 
         <main class="py-4">
             @yield('content')
