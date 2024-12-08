@@ -18,19 +18,23 @@ use App\Http\Controllers\NewsController;
 |
 */
 
+// Página de inicio
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+// Vista de dashboard (Parcial, en construcción)
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// });
+
 
 Auth::routes();
 
+// Ruta al iniciar sesión correctamente
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
+// Rutas de recursos
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('cars', CarController::class);
     Route::resource('rooms', RoomController::class);

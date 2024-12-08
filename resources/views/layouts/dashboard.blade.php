@@ -23,17 +23,17 @@
 
   <!-- Icons -->
   <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
-  <link rel="shortcut icon" href="assets/media/favicons/favicon.png">
+  <link rel="shortcut icon" href="{{ asset('assets/media/favicons/favicon.png') }}">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/media/favicons/favicon-192x192.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/media/favicons/apple-touch-icon-180x180.png">
   <!-- END Icons -->
 
   <!-- Stylesheets -->
   <!-- Dashmix framework -->
-  <link rel="stylesheet" id="css-main" href="assets/css/dashmix.min.css">
+  <link rel="stylesheet" id="css-main" href="{{ asset('assets/css/dashmix.min.css') }}">
 
   <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
-  <link rel="stylesheet" id="css-theme" href="assets/css/themes/xplay.min.css">
+  <link rel="stylesheet" id="css-theme" href="{{ asset('assets/css/themes/xplay.min.css') }}">
   <!-- END Stylesheets -->
 </head>
 
@@ -102,7 +102,7 @@
       <div class="bg-header-dark">
         <div class="content-header bg-white-5">
           <!-- Logo -->
-          <a class="fw-semibold text-white tracking-wide" href="/dashboard">
+          <a class="fw-semibold text-white tracking-wide" href="/home">
             <span class="smini-visible">
               D<span class="opacity-75">x</span>
             </span>
@@ -151,7 +151,7 @@
         <div class="content-side">
           <ul class="nav-main">
             <li class="nav-main-item">
-              <a class="nav-main-link" href="/dashboard">
+              <a class="nav-main-link" href="/home">
                 <i class="nav-main-link-icon fa fa-location-arrow"></i>
                 <span class="nav-main-link-name">Dashboard</span>
                 {{-- <span class="nav-main-link-badge badge rounded-pill bg-primary">8</span> --}}
@@ -201,36 +201,41 @@
                 </li>
               </ul>
             </li>
-            <li class="nav-main-heading">Gestión de Usuarios</li>
-            <li class="nav-main-item">
-              <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
-                aria-expanded="false" href="#">
-                <i class="nav-main-link-icon fa fa-flask"></i>
-                <span class="nav-main-link-name">Usuarios</span>
-              </a>
-              <ul class="nav-main-submenu">
-                <li class="nav-main-item">
-                  <a class="nav-main-link" href="{{ route('admin.users.index') }}">
-                    <span class="nav-main-link-name">Administrar Usuarios</span>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-main-item">
-              <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
-                aria-expanded="false" href="#">
-                <i class="nav-main-link-icon fa fa-grip-horizontal"></i>
-                <span class="nav-main-link-name">Roles</span>
-              </a>
-              <ul class="nav-main-submenu">
-                <li class="nav-main-item">
-                  <a class="nav-main-link" href="{{ route('admin.roles.index') }}">
-                    <span class="nav-main-link-name">Administrar Roles</span>
-                  </a>
-                </li>
 
-              </ul>
-            </li>
+            @auth
+                @role('admin')
+                <li class="nav-main-heading">Gestión de Usuarios</li>
+                <li class="nav-main-item">
+                  <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
+                    aria-expanded="false" href="#">
+                    <i class="nav-main-link-icon fa fa-flask"></i>
+                    <span class="nav-main-link-name">Usuarios</span>
+                  </a>
+                  <ul class="nav-main-submenu">
+                    <li class="nav-main-item">
+                      <a class="nav-main-link" href="{{ route('admin.users.index') }}">
+                        <span class="nav-main-link-name">Administrar Usuarios</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-main-item">
+                  <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
+                    aria-expanded="false" href="#">
+                    <i class="nav-main-link-icon fa fa-grip-horizontal"></i>
+                    <span class="nav-main-link-name">Roles</span>
+                  </a>
+                  <ul class="nav-main-submenu">
+                    <li class="nav-main-item">
+                      <a class="nav-main-link" href="{{ route('admin.roles.index') }}">
+                        <span class="nav-main-link-name">Administrar Roles</span>
+                      </a>
+                    </li>
+
+                  </ul>
+                </li>
+                @endrole
+            @endauth
 
 
           </ul>
@@ -347,55 +352,9 @@
 
     <!-- Main Container -->
     <main id="main-container">
-      <!-- Hero -->
-      {{-- <div class="bg-image" style="background-image: url('assets/media/various/bg_dashboard.jpg');">
-        <div class="bg-primary-dark-op">
-          <div class="content content-full">
-            <div class="row my-3">
-              <div class="col-md-6 d-md-flex align-items-md-center">
-                <div class="py-4 py-md-0 text-center text-md-start">
-                  <h1 class="fs-2 text-white mb-2">Dashboard</h1>
-                  <h2 class="fs-lg fw-normal text-white-75 mb-0">Welcome to your overview</h2>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div> --}}
-      <!-- END Hero -->
-
-      <!-- Hero -->
-      <div class="bg-body-light">
-        <div class="content content-full">
-          <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
-            <h1 class="flex-grow-1 fs-3 fw-semibold my-2 my-sm-3">Discussion</h1>
-            <nav class="flex-shrink-0 my-2 my-sm-0 ms-sm-3" aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                  <a href="be_pages_forum_categories.html">Forum</a>
-                </li>
-                <li class="breadcrumb-item">
-                  <a href="be_pages_forum_topics.html">Topics</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">Discussion</li>
-              </ol>
-            </nav>
-          </div>
-        </div>
-      </div>
-      <!-- END Hero -->
 
       <!-- Page Content -->
-      <div class="content">
-
-        <h2>Hello world!</h2>
-
-
-
-
-
-      </div>
+      @yield('content')
       <!-- END Page Content -->
     </main>
     <!-- END Main Container -->
@@ -423,14 +382,14 @@
       Core libraries and functionality
       webpack is putting everything together at assets/_js/main/app.js
     -->
-  <script src="assets/js/dashmix.app.min.js"></script>
+  <script src="{{ asset('assets/js/dashmix.app.min.js') }}"></script>
 
   <!-- jQuery (required for jQuery Sparkline plugin) -->
-  <script src="assets/js/lib/jquery.min.js"></script>
+  <script src="{{ asset('assets/js/lib/jquery.min.js') }}"></script>
 
   <!-- Page JS Plugins -->
-  <script src="assets/js/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
-  <script src="assets/js/plugins/chart.js/chart.min.js"></script>
+  <script src="{{ asset('assets/js/plugins/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
+  <script src="{{ asset('assets/js/plugins/chart.js/chart.min.js') }}"></script>
 
   <!-- Page JS Code -->
   <script src="assets/js/pages/be_pages_dashboard_v1.min.js"></script>
