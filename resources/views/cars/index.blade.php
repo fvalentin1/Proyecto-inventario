@@ -1,5 +1,7 @@
 @extends('layouts.dashboard')
 
+@section('title', '- Cars')
+
 @section('content')
     <!-- Hero -->
     <div class="bg-body-light">

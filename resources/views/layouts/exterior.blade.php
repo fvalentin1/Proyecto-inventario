@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-  <title>Dashmix - Bootstrap 5 Admin Template &amp; UI Framework</title>
+  <title>Inventario @yield('title')</title>
 
   <meta name="description"
     content="Dashmix - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
@@ -108,7 +108,7 @@
           <!-- Logo -->
           <a class="fw-semibold text-dual tracking-wide" href="/">
             Dash<span class="opacity-75">mix</span>
-            <span class="fw-normal">Boxed</span>
+            {{-- <span class="fw-normal">Boxed</span> --}}
           </a>
           <!-- END Logo -->
           @auth

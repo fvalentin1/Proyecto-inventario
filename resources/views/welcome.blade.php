@@ -1,5 +1,7 @@
 @extends('layouts.exterior')
 
+@section('title', '- Inicio')
+
 @section('content')
     <!-- Hero -->
     <div class="bg-image" style="background-image: url('assets/media/photos/photo15@2x.jpg');">

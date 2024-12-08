@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-  <title>Dashmix - Bootstrap 5 Admin Template &amp; UI Framework</title>
+  <title>Inventario @yield('title')</title>
 
   <meta name="description"
     content="Dashmix - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
@@ -102,7 +102,7 @@
       <div class="bg-header-dark">
         <div class="content-header bg-white-5">
           <!-- Logo -->
-          <a class="fw-semibold text-white tracking-wide" href="/home">
+          <a class="fw-semibold text-white tracking-wide" href="/">
             <span class="smini-visible">
               D<span class="opacity-75">x</span>
             </span>
