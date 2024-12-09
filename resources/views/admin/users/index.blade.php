@@ -21,7 +21,6 @@
     <!-- END Hero -->
 
     <div class="content">
-        <h1>Lista de Usuarios</h1>
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
@@ -44,7 +43,17 @@
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->getRoleNames()->implode(', ') }}</td>
+                        <td>
+                            @foreach($user->getRoleNames() as $role)
+                                @if($role == 'admin')
+                                    <span class="badge bg-warning">{{ $role }}</span>
+                                @elseif($role == 'usuario')
+                                    <span class="badge bg-success">{{ $role }}</span>
+                                @else
+                                    <span class="badge bg-info">{{ $role }}</span>
+                                @endif
+                            @endforeach
+                        </td>
                         <td>
                             <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary">Editar</a>
                             <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" style="display: inline-block;">

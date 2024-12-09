@@ -37,6 +37,7 @@
 
   <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
   <link rel="stylesheet" id="css-theme" href="{{ asset('assets/css/themes/xplay.min.css') }}">
+
   <!-- END Stylesheets -->
 </head>
 
@@ -126,10 +127,10 @@
             @guest
                 <!-- Open Session Section -->
                 <a type="button" class="btn btn-alt-secondary ms-2" href="{{ route('login') }}">
-                    <i class="fa-solid fa-right-to-bracket"></i> Iniciar Sesión
+                    <i class="fa-solid fa-right-to-bracket"></i> Sign in
                 </a>
                 <a type="button" class="btn btn-alt-secondary ms-2" href="{{ route('register') }}">
-                    <i class="fa-solid fa-user-pen"></i> Registrarse
+                    <i class="fa-solid fa-user-pen"></i> Sign up
                 </a>
                 <!-- END Open Sessions Section -->
             @else
