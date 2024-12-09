@@ -22,29 +22,34 @@
 
     <div class="content">
         <a href="{{ route('admin.roles.create') }}" class="btn btn-primary">Crear Nuevo Rol</a>
-        <table class="table mt-3">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($roles as $role)
+
+        <div class="block-content block-content-full">
+            <table class="table table-bordered table-striped table-vcenter js-dataTable-responsive mt-3">
+                <thead>
                     <tr>
-                        <td>{{ $role->id }}</td>
-                        <td>{{ $role->name }}</td>
-                        <td>
-                            <form action="{{ route('admin.roles.destroy', $role->id) }}" method="POST" style="display: inline-block;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Eliminar</button>
-                            </form>
-                        </td>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Acciones</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($roles as $role)
+                        <tr>
+                            <td>{{ $role->id }}</td>
+                            <td>{{ $role->name }}</td>
+                            <td>
+                                <form action="{{ route('admin.roles.destroy', $role->id) }}" method="POST" style="display: inline-block;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
+        </div>
+
     </div>
 @endsection

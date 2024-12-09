@@ -29,6 +29,12 @@
   <!-- END Icons -->
 
   <!-- Stylesheets -->
+
+  <!-- Datatables -->
+  <link rel="stylesheet" href="{{ asset('assets/js/plugins/datatables-bs5/css/dataTables.bootstrap5.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/js/plugins/datatables-buttons-bs5/css/buttons.bootstrap5.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/js/plugins/datatables-responsive-bs5/css/responsive.bootstrap5.min.css') }}">
+
   <!-- Dashmix framework -->
   <link rel="stylesheet" id="css-main" href="{{ asset('assets/css/dashmix.min.css') }}">
 
@@ -151,7 +157,7 @@
         <div class="content-side">
           <ul class="nav-main">
             <li class="nav-main-item">
-              <a class="nav-main-link" href="/home">
+              <a class="nav-main-link {{ Route::is('home') ? 'active' : '' }}" href="/home">
                 <i class="nav-main-link-icon fa fa-location-arrow"></i>
                 <span class="nav-main-link-name">Dashboard</span>
                 {{-- <span class="nav-main-link-badge badge rounded-pill bg-primary">8</span> --}}
@@ -160,9 +166,9 @@
 
             <li class="nav-main-heading">Gestión Base</li>
             <li class="nav-main-item">
-              <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
+              <a class="nav-main-link {{ Route::is('rooms.*') ? 'active' : '' }} nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
                 aria-expanded="false" href="#">
-                <i class="nav-main-link-icon fa fa-border-all"></i>
+                <i class="nav-main-link-icon fa fa-school"></i>
                 <span class="nav-main-link-name">Salones</span>
               </a>
               <ul class="nav-main-submenu">
@@ -174,9 +180,9 @@
               </ul>
             </li>
             <li class="nav-main-item">
-              <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
+              <a class="nav-main-link {{ Route::is('cars.*') ? 'active' : '' }} nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
                 aria-expanded="false" href="#">
-                <i class="nav-main-link-icon fa fa-boxes"></i>
+                <i class="nav-main-link-icon fa fa-car"></i>
                 <span class="nav-main-link-name">Autos</span>
               </a>
               <ul class="nav-main-submenu">
@@ -188,9 +194,9 @@
               </ul>
             </li>
             <li class="nav-main-item">
-              <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
+              <a class="nav-main-link {{ Route::is('news.*') ? 'active' : '' }} nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
                 aria-expanded="false" href="#">
-                <i class="nav-main-link-icon fa fa-vector-square"></i>
+                <i class="nav-main-link-icon fa fa-newspaper"></i>
                 <span class="nav-main-link-name">Noticias</span>
               </a>
               <ul class="nav-main-submenu">
@@ -206,9 +212,9 @@
                 @role('admin')
                 <li class="nav-main-heading">Gestión de Usuarios</li>
                 <li class="nav-main-item">
-                  <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
+                  <a class="nav-main-link {{ Route::is('admin.users.*') ? 'active' : '' }} nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
                     aria-expanded="false" href="#">
-                    <i class="nav-main-link-icon fa fa-flask"></i>
+                    <i class="nav-main-link-icon fa fa-users-gear"></i>
                     <span class="nav-main-link-name">Usuarios</span>
                   </a>
                   <ul class="nav-main-submenu">
@@ -220,9 +226,9 @@
                   </ul>
                 </li>
                 <li class="nav-main-item">
-                  <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
+                  <a class="nav-main-link {{ Route::is('admin.roles.*') ? 'active' : '' }} nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
                     aria-expanded="false" href="#">
-                    <i class="nav-main-link-icon fa fa-grip-horizontal"></i>
+                    <i class="nav-main-link-icon fa fa-id-card"></i>
                     <span class="nav-main-link-name">Roles</span>
                   </a>
                   <ul class="nav-main-submenu">
@@ -269,7 +275,11 @@
           <div class="dropdown d-inline-block">
             <button type="button" class="btn btn-alt-secondary" id="page-header-user-dropdown" data-bs-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
+              @role('admin')
+                <i class="fa fa-fw fa-user-gear d-sm-none"></i>
+              @else
               <i class="fa fa-fw fa-user d-sm-none"></i>
+              @endrole
               <span class="d-none d-sm-inline-block">
                 @role('admin')
                     <i class="fa-solid fa-user-gear"></i> {{ Auth::user()->name }}
@@ -384,7 +394,7 @@
     -->
   <script src="{{ asset('assets/js/dashmix.app.min.js') }}"></script>
 
-  <!-- jQuery (required for jQuery Sparkline plugin) -->
+  <!-- jQuery (required for jQuery Sparkline plugin && required for DataTables plugin) -->
   <script src="{{ asset('assets/js/lib/jquery.min.js') }}"></script>
 
   <!-- Page JS Plugins -->
@@ -392,7 +402,23 @@
   <script src="{{ asset('assets/js/plugins/chart.js/chart.min.js') }}"></script>
 
   <!-- Page JS Code -->
-  <script src="assets/js/pages/be_pages_dashboard_v1.min.js"></script>
+  <script src="{{ asset('assets/js/pages/be_pages_dashboard_v1.min.js') }}"></script>
+
+  <!-- Page JS Plugins -->
+  <script src="{{ asset('assets/js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ asset('assets/js/plugins/datatables-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
+  <script src="{{ asset('assets/js/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+  <script src="{{ asset('assets/js/plugins/datatables-responsive-bs5/js/responsive.bootstrap5.min.js') }}"></script>
+  <script src="{{ asset('assets/js/plugins/datatables-buttons/dataTables.buttons.min.js') }}"></script>
+  <script src="{{ asset('assets/js/plugins/datatables-buttons-bs5/js/buttons.bootstrap5.min.js') }}"></script>
+  <script src="{{ asset('assets/js/plugins/datatables-buttons-jszip/jszip.min.js') }}"></script>
+  <script src="{{ asset('assets/js/plugins/datatables-buttons-pdfmake/pdfmake.min.js') }}"></script>
+  <script src="{{ asset('assets/js/plugins/datatables-buttons-pdfmake/vfs_fonts.js') }}"></script>
+  <script src="{{ asset('assets/js/plugins/datatables-buttons/buttons.print.min.js') }}"></script>
+  <script src="{{ asset('assets/js/plugins/datatables-buttons/buttons.html5.min.js') }}"></script>
+
+  <!-- Page JS Code -->
+  <script src="{{ asset('assets/js/pages/be_tables_datatables.min.js') }}"></script>
 
   <!-- Page JS Helpers (jQuery Sparkline plugin) -->
   <script>Dashmix.helpersOnLoad(['jq-sparkline']);</script>

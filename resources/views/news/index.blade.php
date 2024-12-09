@@ -23,7 +23,7 @@
     <!-- END Hero -->
 
     <div class="content">
-        <a href="{{ route('news.create') }}" class="btn btn-primary mb-3">Create News</a>
+        <a href="{{ route('news.create') }}" class="btn btn-success mb-3">Create News</a>
         <div class="row">
             @foreach ($news as $item)
                 <div class="col-md-4 mb-4">
