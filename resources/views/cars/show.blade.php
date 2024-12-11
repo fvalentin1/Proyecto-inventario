@@ -6,13 +6,13 @@
     <div class="bg-body-light">
         <div class="content content-full">
           <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
-            <h1 class="flex-grow-1 fs-3 fw-semibold my-2 my-sm-3">Car Details</h1>
+            <h1 class="flex-grow-1 fs-3 fw-semibold my-2 my-sm-3">Detalles del auto</h1>
             <nav class="flex-shrink-0 my-2 my-sm-0 ms-sm-3" aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                  <a href="#">Cars</a>
+                  <a href="#">Autos</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Show</li>
+                <li class="breadcrumb-item active" aria-current="page">Ver</li>
               </ol>
             </nav>
           </div>

@@ -30,7 +30,7 @@ class CarController extends Controller
 
         Car::create($request->all());
 
-        return redirect()->route('cars.index')->with('success', 'Car added successfully.');
+        return redirect()->route('cars.index')->with('success', 'Auto agregado correctamente.');
     }
 
     public function show(Car $car)
@@ -53,13 +53,13 @@ class CarController extends Controller
         ]);
 
         $car->update($request->all());
-        return redirect()->route('cars.index')->with('success', 'Car updated successfully.');
+        return redirect()->route('cars.index')->with('success', 'Auto actualizado correctamente.');
     }
 
     public function destroy(Car $car)
     {
         $car->delete();
-        return redirect()->route('cars.index')->with('success', 'Car deleted successfully.');
+        return redirect()->route('cars.index')->with('success', 'Auto eliminado correctamente.');
     }
 
 }
