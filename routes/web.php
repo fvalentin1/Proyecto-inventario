@@ -6,6 +6,7 @@ use App\Http\Controllers\CarController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\UserProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,4 +55,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/roles/create', [UserController::class, 'createRole'])->name('admin.roles.create');
     Route::post('/admin/roles', [UserController::class, 'storeRole'])->name('admin.roles.store');
     Route::delete('/admin/roles/{id}', [UserController::class, 'destroyRole'])->name('admin.roles.destroy');
+});
+
+// Rutas de perfil de usuario
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [UserProfileController::class, 'show'])->name('profile.show');
+    Route::get('/profile/edit', [UserProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [UserProfileController::class, 'update'])->name('profile.update');
 });

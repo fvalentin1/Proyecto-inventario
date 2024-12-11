@@ -299,7 +299,7 @@
                 User Options
               </div>
               <div class="p-2">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="{{ route('profile.show') }}">
                   <i class="far fa-fw fa-user me-1"></i> Perfil
                 </a>
 
