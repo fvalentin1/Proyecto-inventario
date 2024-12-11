@@ -61,3 +61,17 @@
         </div>
     </div>
 @endsection
+
+@push('js')
+    @if(session('success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: '{{ session('success') }}',
+                });
+            });
+        </script>
+    @endif
+@endpush

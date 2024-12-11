@@ -30,6 +30,10 @@
 
   <!-- Stylesheets -->
 
+  <!-- Page JS Plugins CSS -->
+  <link rel="stylesheet" href="{{ asset('assets/js/plugins/sweetalert2/sweetalert2.min.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   <!-- Datatables -->
   <link rel="stylesheet" href="{{ asset('assets/js/plugins/datatables-bs5/css/dataTables.bootstrap5.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/js/plugins/datatables-buttons-bs5/css/buttons.bootstrap5.min.css') }}">
@@ -421,8 +425,18 @@
   <!-- Page JS Code -->
   <script src="{{ asset('assets/js/pages/be_tables_datatables.min.js') }}"></script>
 
+  <!-- Page JS Plugins -->
+  <script src="{{ asset('assets/js/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+
+  <!-- Page JS Code -->
+  <script src="{{ asset('assets/js/pages/be_comp_dialogs.min.js') }}"></script>
+
   <!-- Page JS Helpers (jQuery Sparkline plugin) -->
   <script>Dashmix.helpersOnLoad(['jq-sparkline']);</script>
+
+  <!-- Stack JS -->
+  @stack('js')
+
 </body>
 
 </html>
